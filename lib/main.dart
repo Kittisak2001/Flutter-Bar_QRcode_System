@@ -35,7 +35,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    checkLineURL = true; checkFacebookURL = true; checkYoutubeURL = true;
+    checkLineURL = false;
+    checkFacebookURL = false;
+    checkYoutubeURL = true;
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -58,7 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         height: 20,
                       ),
                       Text(
-                        scanresult ??= "ยังไม่มีข้อมูล",
+                        scanresult =
+                            "https://www.youtube.com/channel/UCKWp4QbICmcrLN5vNphcCWQ",
                         style: TextStyle(fontSize: 25),
                       ),
                       Spacer(),
@@ -66,9 +69,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           ? SizedBox(
                               width: double.infinity,
                               child: RaisedButton(
-                                onPressed: () async{
-                                  scanresult = "https://line.me/ti/p/wsRCNoGovZ";
-                                  launch(scanresult!);
+                                onPressed: () {
+                                  //     launch(scanresult!);
                                 },
                                 color: Colors.green[900],
                                 child: Text(
@@ -85,10 +87,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           ? SizedBox(
                               width: double.infinity,
                               child: RaisedButton(
-                                onPressed: () async{
-                                  scanresult = "https://facebook.com/qr?id=100009272447378";
-                                  launch(scanresult!);
-                                  
+                                onPressed: () {
+                                  // launch(scanresult!);
                                 },
                                 color: Colors.blue[900],
                                 child: Text(
@@ -105,8 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ? SizedBox(
                               width: double.infinity,
                               child: RaisedButton(
-                                onPressed: () async{
-                                  scanresult = "https://www.youtube.com/channel/UCKWp4QbICmcrLN5vNphcCWQ";
+                                onPressed: () {
                                   launch(scanresult!);
                                 },
                                 color: Colors.red[900],
@@ -138,9 +137,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
     if (scanresult!.contains("line.me")) {
       checkLineURL = true;
-    }else if(scanresult!.contains("facebook.com")){
+    } else if (scanresult!.contains("facebook.com")) {
       checkFacebookURL = true;
-    }else if(scanresult!.contains("youtube.com")){
+    } else if (scanresult!.contains("youtube.com")) {
       checkYoutubeURL = true;
     }
   }
